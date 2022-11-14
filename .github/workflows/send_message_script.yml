@@ -17,6 +17,6 @@ jobs:
         with:
           python-version: 3.8
       - name: Test env vars for python
-        run: python -c 'import os;os.environ["SLACK_HLC_TOKEN"] = ${{ secrets.SLACK_HLC_TOKEN }}; python SendMessage.py'
+        run: python -c 'import os;os.environ["SLACK_HLC_TOKEN"] = ${{ secrets.SLACK_HLC_TOKEN }}'
         env:
           SLACK_HLC_TOKEN: ${{ secrets.SLACK_HLC_TOKEN }} 
