@@ -1,2 +1,3 @@
-# slackbot
-slackbot to send messages to users in a workspace
+# Welcome to Slackbot
+
+Make sure to save your Slack API token in the "Secrets" section of the Github repository settings.
