@@ -14,7 +14,11 @@ jobs:
       - name: Test env vars for python
         run: python -c 'import os;'
         env:
-          SLACK_HLC_TOKEN: ${{ secrets.SLACK_HLC_TOKEN }} 
+          SLACK_HLC_TOKEN: ${{ secrets.SLACK_HLC_TOKEN }}
+      - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install slack_sdk
       - name: execute py script # run file
         run: |
           python SendMessage.py
