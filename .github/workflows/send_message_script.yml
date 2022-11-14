@@ -1,9 +1,8 @@
 name: Run SendMessage.py
-run-name: ${{ github.actor }} just ran ${{ github.workflow }} on ${{ github.repository }}
+run-name: New ${{ github.workflow }} event
 on:
   schedule:
-  #run a cron job every 5 minutes
-  - cron: '*/5 * * * *'
+  - cron: '0 16 * * 5'
 
 jobs:
   Explore-GitHub-Actions:
