@@ -20,7 +20,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install slack_sdk
       - name: execute py script # run file
-          env:  
-            SLACK_HLC_TOKEN: '${{ secrets.SLACK_HLC_TOKEN }}'
+        env:  
+          SLACK_HLC_TOKEN: '${{ secrets.SLACK_HLC_TOKEN }}'
         run: |
           python SendMessage.py
