@@ -7,14 +7,14 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
-      - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: 3.8
       - name: Test env vars for python
-        run: python -c 'import os; python SendMessage.py'
+        run: python -c 'import os;'
         env:
           SLACK_HLC_TOKEN: ${{ secrets.SLACK_HLC_TOKEN }} 
+      - name: execute py script # run file
+        run: |
+          python SendMessage.py
