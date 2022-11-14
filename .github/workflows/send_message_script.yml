@@ -1,6 +1,9 @@
 name: Run SendMessage.py
 run-name: ${{ github.actor }} just ran ${{ github.workflow }} on ${{ github.repository }}
-on: [push]
+on:
+  schedule:
+  - cron: '0 45 23 ? * 2/1 *'
+
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
