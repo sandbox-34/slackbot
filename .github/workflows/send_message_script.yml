@@ -1,4 +1,4 @@
-name: Run SendMessage.py
+name: Run SendMessage.py Every Friday at 16:00 UTC
 run-name: New ${{ github.workflow }} event
 on:
   schedule:
