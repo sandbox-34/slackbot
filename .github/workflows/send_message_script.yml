@@ -24,5 +24,5 @@ jobs:
         run: python -c 'import os;print(os.environ)'
         env:
           ENV_SECRET: ${{ secrets.ENV_SECRET }} 
-          ENV_SECRET: ${{ secrets.SLACK_HLC_TOKEN }} 
+          SLACK_HLC_TOKEN: ${{ secrets.SLACK_HLC_TOKEN }} 
           REPO_SECRET: ${{ secrets.REPO_SECRET }} 
