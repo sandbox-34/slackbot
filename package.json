@@ -1,0 +1,22 @@
+{
+  "name": "slackbot",
+  "version": "1.0.0",
+  "description": "Make sure to save your Slack API token in the \"Secrets\" section of the Github repository settings.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sandbox-34/slackbot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sandbox-34/slackbot/issues"
+  },
+  "homepage": "https://github.com/sandbox-34/slackbot#readme",
+  "dependencies": {
+    "@slack/bolt": "^3.12.2"
+  }
+}
