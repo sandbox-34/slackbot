@@ -4,9 +4,8 @@
   "description": "Make sure to save your Slack API token in the \"Secrets\" section of the Github repository settings.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node publishView.js",
-    "deploy": "serverless deploy"
+    "deploy": "serverless deploy",
+    "dev": "serverless offline --noPrependStageInUrl"
   },
   "repository": {
     "type": "git",
