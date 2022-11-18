@@ -2,10 +2,11 @@
   "name": "slackbot",
   "version": "1.0.0",
   "description": "Make sure to save your Slack API token in the \"Secrets\" section of the Github repository settings.",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node publishView.js"
+    "start": "node publishView.js",
+    "deploy": "serverless deploy"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
     "request": "^2.88.2"
   },
   "devDependencies": {
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "serverless-offline": "^11.4.0"
   }
 }

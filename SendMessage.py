@@ -2,7 +2,7 @@ import os
 from slack_sdk import WebClient
 from slack_sdk.errors import SlackApiError
 
-client = WebClient(token=os.environ.get('SLACK_HLC_TOKEN'))
+client = WebClient(token=os.environ.get('SLACK_BOT_TOKEN'))
 
 def getAllChannels():
     try:
