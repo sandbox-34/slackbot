@@ -46,7 +46,8 @@ app.message("hello", async ({ message, say }) => {
 })
 
 app.command("/getallchannels", async ({ command, ack, say }) => {
-	const channelNameToLookup = "jackson-test"
+	console.log(command.text)
+	const channelNameToLookup = command.text
 
 	async function populateConversationStore() {
 		try {
