@@ -20,6 +20,73 @@ const app = new App({
 	// processBeforeResponse: true
 })
 
+app.action("birthday_collector", async ({ body, context, ack }) => {
+	await ack()
+	
+	async function publishMessage(id) {
+		try {
+			// Call the chat.postMessage method using the built-in WebClient
+			const result = await app.client.chat.postMessage({
+				channel: id,
+				text: "got it :)",		
+				// You could also use a blocks[] array to send richer content
+			})
+
+			// Print result, which includes information about the message (like TS)
+			console.log(result)
+		} catch (error) {
+			console.error(error)
+		}
+	}
+
+	publishMessage(body.channel.id)
+
+})
+
+
+// send a message containing an input block for the user to respond to
+app.command("/sendmessage", async ({ command, ack, say }) => {
+	await ack()
+	
+	async function publishMessage(id) {
+		try {
+			// Call the chat.postMessage method using the built-in WebClient
+			const result = await app.client.chat.postMessage({
+				// The token you used to initialize your app
+				// token: "xoxb-your-token",
+				channel: id,
+				// text: text,
+				blocks: [
+					{
+						type: "section",
+						text: {
+							type: "mrkdwn",
+							text: "Select Your Birthday",
+						},
+						accessory: {
+							type: "datepicker",
+							action_id: "birthday_collector",
+							initial_date: "2000-01-01",
+							placeholder: {
+								type: "plain_text",
+								text: "Select a date",
+							},
+						},
+					},
+				],
+		
+				// You could also use a blocks[] array to send richer content
+			})
+
+			// Print result, which includes information about the message (like TS)
+			console.log(result)
+		} catch (error) {
+			console.error(error)
+		}
+	}
+
+	publishMessage("U02SWAYMZ3N")
+})
 // Listens to incoming messages that contain "hello"
 app.message("hello", async ({ message, say }) => {
 	// say() sends a message to the channel where the event was triggered
