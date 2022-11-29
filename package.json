@@ -1,6 +1,5 @@
 {
   "name": "slackbot",
-  "type": "module",
   "version": "1.0.0",
   "description": "Make sure to save your Slack API token in the \"Secrets\" section of the Github repository settings.",
   "main": "app.js",

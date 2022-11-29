@@ -1,5 +1,9 @@
 require("dotenv").config()
 const { App, AwsLambdaReceiver } = require("@slack/bolt")
+const supabase = require("@supabase/supabase-js").createClient(
+	process.env.SUPABASE_URL,
+	process.env.SUPABASE_ANON_KEY
+)
 
 // Initialize your custom receiver
 const awsLambdaReceiver = new AwsLambdaReceiver({
@@ -22,13 +26,23 @@ const app = new App({
 
 app.action("birthday_collector", async ({ body, context, ack }) => {
 	await ack()
-	
+
 	async function publishMessage(id) {
 		try {
+			const { data, error } = await supabase
+				.from("MessageInfo")
+				.insert([{ FullText: { hello: "hello" } }])
+
+			if (error) {
+				console.log(error)
+			}
+			if (data) {
+				console.log(data)
+			}
 			// Call the chat.postMessage method using the built-in WebClient
 			const result = await app.client.chat.postMessage({
 				channel: id,
-				text: "got it :)",		
+				text: "got it :)",
 				// You could also use a blocks[] array to send richer content
 			})
 
@@ -40,14 +54,12 @@ app.action("birthday_collector", async ({ body, context, ack }) => {
 	}
 
 	publishMessage(body.channel.id)
-
 })
-
 
 // send a message containing an input block for the user to respond to
 app.command("/sendmessage", async ({ command, ack, say }) => {
 	await ack()
-	
+
 	async function publishMessage(id) {
 		try {
 			// Call the chat.postMessage method using the built-in WebClient
@@ -74,7 +86,7 @@ app.command("/sendmessage", async ({ command, ack, say }) => {
 						},
 					},
 				],
-		
+
 				// You could also use a blocks[] array to send richer content
 			})
 
